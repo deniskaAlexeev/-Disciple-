@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disciple Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Disciple Studio</a>
+            <nav class="nav-links">
+                <a href="#strategies">Стратегии</a>
+                <a href="#marketing">Маркетинг</a>
+                <a href="#branding">Брендинг</a>
+                <a href="#naming">Нейминг</a>
+                <a href="#consulting">Консалтинг</a>
+                <a href="#projects">Проекты</a>
+                <a href="#about">О нас</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+                <div class="menu-toggle">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- СТРАТЕГИИ (Interactive) -->
+        <section id="strategies" class="apple-section interactive-section" onclick="openModal('strategies-modal')">
+            <div class="section-hero">
+                <h2>СТРАТЕГИИ</h2>
+                <p>Разрабатываем планы достижения целей.</p>
+                <span class="learn-more">Узнать больше</span>
+            </div>
+            <div class="section-cover">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1200" alt="Стратегии">
+            </div>
+        </section>
+
+        <!-- МАРКЕТИНГ (Interactive) -->
+        <section id="marketing" class="apple-section interactive-section gray-bg" onclick="openModal('marketing-modal')">
+            <div class="section-hero">
+                <h2>МАРКЕТИНГ</h2>
+                <p>Продвигаем бренды в digital.</p>
+                <span class="learn-more">Узнать больше</span>
+            </div>
+            <div class="section-cover">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Маркетинг">
+            </div>
+        </section>
+
+        <!-- БРЕНДИНГ (Static) -->
+        <section id="branding" class="apple-section static-section">
+            <div class="section-hero">
+                <h2>БРЕНДИНГ</h2>
+                <p>Создаём и развиваем бренды.</p>
+            </div>
+            <div class="section-cover">
+                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=1200" alt="Брендинг">
+            </div>
+        </section>
+
+        <!-- НЕЙМИНГ (Static) -->
+        <section id="naming" class="apple-section static-section gray-bg">
+            <div class="section-hero">
+                <h2>НЕЙМИНГ</h2>
+                <p>Придумываем названия для компаний и продуктов.</p>
+            </div>
+            <div class="static-img-container">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200" alt="Нейминг">
+            </div>
+        </section>
+
+        <!-- КОНСАЛТИНГ (Static) -->
+        <section id="consulting" class="apple-section static-section">
+            <div class="section-hero">
+                <h2>КОНСАЛТИНГ</h2>
+                <p>Экспертная поддержка бизнеса.</p>
+            </div>
+            <div class="static-img-container">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200" alt="Консалтинг">
+            </div>
+        </section>
+
+        <!-- ПРОЕКТЫ (Carousel) Inverted Black Block -->
+        <section id="projects" class="apple-section carousel-section bg-black">
+             <div class="section-hero compact">
+                <h2>ПРОЕКТЫ</h2>
+             </div>
+             <div class="carousel-container">
+                 <div class="carousel-track" id="projects-carousel">
+                     <div class="carousel-slide interactive-slide" onclick="openModal('project1-modal')">
+                         <img src="./public/images/логонатан.png" alt="Nathan Anderson" class="carousel-img">
+                     </div>
+                     <div class="carousel-slide interactive-slide" onclick="openModal('project2-modal')">
+                         <img src="./public/images/логоколяокна.png" alt="КОЛЯ ОКНА" class="carousel-img">
+                     </div>
+                     <div class="carousel-slide interactive-slide" onclick="openModal('project3-modal')">
+                         <img src="./public/images/логоуютное.jpg" alt="УЮТНОЕ ПРОСТРАНСТВО" class="carousel-img">
+                     </div>
+                     <div class="carousel-slide interactive-slide" onclick="openModal('project4-modal')">
+                         <img src="./public/images/логоптг.PNG" alt="PTG" class="carousel-img">
+                     </div>
+                 </div>
+                 
+                 <div class="carousel-controls">
+                     <button class="carousel-btn prev" aria-label="Previous">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                     </button>
+                     <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                     </div>
+                     <button class="carousel-btn next" aria-label="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                     </button>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="apple-footer">
+        <div class="footer-content">
+            <div id="about" class="footer-col">
+                <h4>О НАС</h4>
+                <p>Disciple Studio — это маркетинговое агентство, создающее минималистичные, современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге.</p>
+            </div>
+            <div id="contact" class="footer-col">
+                <h4>КОНТАКТЫ</h4>
+                <p>Свяжитесь с нами для старта проекта</p>
+                <a href="tel:+77777777777" class="phone-link">7 777 777 77 77</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Disciple Studio. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- НОВЫЕ СТРАНИЦЫ (Модальные окна) -->
+    
+    <!-- Модалка Стратегии -->
+    <div id="strategies-modal" class="fullscreen-modal">
+        <button class="modal-close" onclick="closeModal('strategies-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Назад
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">Стратегии</h2>
+            <div class="grid-3">
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Корпоративная стратегия" class="prod-img">
+                    <h3>КОРПОРАТИВНАЯ СТРАТЕГИЯ</h3>
+                </div>
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Бизнес стратегия" class="prod-img">
+                    <h3>БИЗНЕС СТРАТЕГИЯ</h3>
+                </div>
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="Функциональная стратегия" class="prod-img">
+                    <h3>ФУНКЦИОНАЛЬНАЯ СТРАТЕГИЯ</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка Маркетинг -->
+    <div id="marketing-modal" class="fullscreen-modal gray-bg">
+        <button class="modal-close" onclick="closeModal('marketing-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Назад
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">Маркетинг</h2>
+            <div class="grid-3">
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Цифровой Маркетинг" class="prod-img">
+                    <h3>ЦИФРОВОЙ (DIGITAL)<br>МАРКЕТИНГ</h3>
+                </div>
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800" alt="SEO" class="prod-img">
+                    <h3>SEO</h3>
+                    <p class="sub-desc">продвижение в Яндекс, Google</p>
+                </div>
+                <div class="product-col">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" alt="SMM" class="prod-img">
+                    <h3>SMM</h3>
+                    <p class="sub-desc">продвижение в VK, Telegram</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалки Проектов -->
+    <div id="project1-modal" class="fullscreen-modal">
+        <button class="modal-close" onclick="closeModal('project1-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Проекты
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">Nathan Anderson</h2>
+            <div class="project-details">
+                <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&q=80&w=1200" alt="Nathan Anderson" class="project-hero-img">
+                <div class="case-study-body">
+                   <h3>1. История проекта</h3>
+                   <p>Бренд "Nathan Anderson" обратился к нам с задачей полного перезапуска устаревшего визуального стиля. Основной целью было привлечение молодой и платежеспособной аудитории, а также отстройка от классических конкурентов на рынке.</p>
+                   
+                   <h3>2. Что мы сделали</h3>
+                   <p>Мы полностью разрушили старые шаблоны. Была разработана уникальная маркетинговая стратегия, опирающаяся на минимализм и чистоту смыслов. Мы внедрили новые гайдлайны, переработали айдентику и запустили свежую рекламную кампанию.</p>
+                   
+                   <div class="grid-2">
+                       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800" alt="Процесс разработки" class="project-img">
+                       <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=800" alt="Готовый продукт" class="project-img">
+                   </div>
+                   
+                   <h3>3. Результаты</h3>
+                   <ul class="results-list">
+                       <li>Увеличение конверсии на 145% за первый квартал.</li>
+                       <li>Масштабный вирусный охват в социальных сетях без платного продвижения.</li>
+                       <li>Заметное снижение стоимости привлечения клиента (CAC).</li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project2-modal" class="fullscreen-modal gray-bg">
+        <button class="modal-close" onclick="closeModal('project2-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Проекты
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">КОЛЯ ОКНА</h2>
+            <div class="project-details">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200" alt="КОЛЯ ОКНА" class="project-hero-img">
+                <div class="case-study-body">
+                   <h3>1. История проекта</h3>
+                   <p>Компания "КОЛЯ ОКНА" предоставляла качественные услуги, но теряла клиентов из-за устаревшего имиджа и запутанного позиционирования в регионах.</p>
+                   
+                   <h3>2. Комплексный подход</h3>
+                   <p>Нашей задачей стал performance-маркетинг с фокусом на SEO и локальный SMM(ВК, Телеграм). Мы обновили нейминг, создали запоминающиеся креативы и полностью переработали цифровую воронку компании, автоматизировав работу с лидами.</p>
+                   
+                   <div class="grid-2">
+                       <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Аналитика" class="project-img">
+                       <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Графики роста" class="project-img">
+                   </div>
+                   
+                   <h3>3. Результат в цифрах</h3>
+                   <ul class="results-list">
+                       <li>Рост органического трафика (SEO) из Яндекса на 300%.</li>
+                       <li>Увеличение потока заявок в 2.5 раза за первый месяц.</li>
+                       <li>Удержание топ-1 в локальной поисковой выдаче.</li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project3-modal" class="fullscreen-modal">
+        <button class="modal-close" onclick="closeModal('project3-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Проекты
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">УЮТНОЕ ПРОСТРАНСТВО</h2>
+            <div class="project-details">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="УЮТНОЕ ПРОСТРАНСТВО" class="project-hero-img">
+                <div class="case-study-body">
+                   <h3>1. Концепция и проблематика</h3>
+                   <p>Бизнес по созданию интерьеров нуждался в элитарном, но доступном позиционировании. Старый брендинг выглядел разрозненным.</p>
+                   
+                   <h3>2. Брендинг и дизайн</h3>
+                   <p>Специалистами Disciple Studio была разработана легкая и узнаваемая визуальная система. Экологичность, чистота линий и премиальность стали основой брендбука.</p>
+                   
+                   <div class="grid-2">
+                       <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=800" alt="Дизайн" class="project-img">
+                       <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Детали" class="project-img">
+                   </div>
+                   
+                   <h3>3. Результаты</h3>
+                   <ul class="results-list">
+                       <li>Создан мощный бренд, узнаваемый аудиторией.</li>
+                       <li>Рост числа крупных B2B заказов.</li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project4-modal" class="fullscreen-modal gray-bg">
+        <button class="modal-close" onclick="closeModal('project4-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Проекты
+        </button>
+        <div class="modal-content">
+            <h2 class="modal-title">ECO SYSTEM</h2>
+            <div class="project-details">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200" alt="ECO SYSTEM" class="project-hero-img">
+                <div class="case-study-body">
+                   <h3>1. Задача</h3>
+                   <p>Стартап в сфере зеленых технологий нуждался в мощном рывке при выходе на переполненный рынок. Требовался консалтинг и нейминг продукта.</p>
+                   
+                   <h3>2. Кампания</h3>
+                   <p>Мы провели глубинный анализ конкурентов и выстроили долгосрочную стратегию развития продукта. Придумали название "ECO SYSTEM", которое мгновенно запоминается на международном рынке, и упаковали смыслы в единую бренд-платформу.</p>
+                   
+                   <div class="grid-2">
+                       <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="Консалтинг" class="project-img">
+                       <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Встреча" class="project-img">
+                   </div>
+                   
+                   <h3>3. Результаты</h3>
+                   <ul class="results-list">
+                       <li>Успешное привлечение Series A инвестиций.</li>
+                       <li>Отличный PR охват в бизнес-изданиях.</li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
