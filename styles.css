@@ -374,7 +374,7 @@ body {
     scroll-behavior: smooth;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    padding: 0 calc(50vw - 400px); /* Center 800px slide. */
+    padding: 0 calc(50vw - 475px); /* Center 950px slide. */
     gap: 24px;
 }
 
@@ -390,13 +390,13 @@ body {
 
 .carousel-slide {
     flex: 0 0 calc(100% - 10%);
-    max-width: 800px;
+    max-width: 950px;
     scroll-snap-align: center;
     position: relative;
     border-radius: 28px;
     overflow: hidden;
-    aspect-ratio: 16/9;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    aspect-ratio: 4/3;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -788,6 +788,32 @@ body {
     color: #0071e3;
 }
 
+.file-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px dashed rgba(125,125,125,0.4);
+    background-color: rgba(125,125,125,0.02);
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.file-btn:hover {
+    background-color: rgba(0,113,227,0.05);
+    border-color: #0071e3;
+    color: #0071e3;
+}
+.file-btn svg {
+    flex-shrink: 0;
+}
+#file-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+}
 
 /* Responsive - Extreme Density for Mobile */
 @media (max-width: 768px) {
@@ -811,15 +837,16 @@ body {
     }
     
     .action-buttons {
-        flex-direction: column;
-        gap: 0.75rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        width: 100%;
     }
     
     .btn {
-        width: 100%;
+        width: 50%;
         justify-content: center;
-        font-size: 1.05rem;
-        padding: 0.9rem 1.4rem;
+        font-size: 0.95rem;
+        padding: 0.9rem 0.5rem;
     }
 
     .section-cover {
