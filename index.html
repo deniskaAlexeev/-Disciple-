@@ -10,7 +10,7 @@
 <body>
     <header class="navbar">
         <div class="navbar-container">
-            <a href="#" class="logo">Disciple Studio</a>
+            <a href="#" class="logo">Disciple Agency</a>
             <nav class="nav-links">
                 <a href="#strategies">Стратегии</a>
                 <a href="#marketing">Маркетинг</a>
@@ -39,7 +39,10 @@
             <div class="section-hero">
                 <h2>СТРАТЕГИИ</h2>
                 <p>Разрабатываем планы достижения целей.</p>
-                <span class="learn-more">Узнать больше</span>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); openModal('strategies-modal')">Узнать больше</button>
+                    <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Стратегии')">Оставить заявку</button>
+                </div>
             </div>
             <div class="section-cover">
                 <img src="./public/images/pic1.png" alt="Стратегии">
@@ -51,7 +54,10 @@
             <div class="section-hero">
                 <h2>МАРКЕТИНГ</h2>
                 <p>Продвигаем бренды в digital.</p>
-                <span class="learn-more">Узнать больше</span>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); openModal('marketing-modal')">Узнать больше</button>
+                    <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Маркетинг')">Оставить заявку</button>
+                </div>
             </div>
             <div class="section-cover">
                 <img src="./public/images/pic2.png" alt="Маркетинг">
@@ -63,6 +69,10 @@
             <div class="section-hero">
                 <h2>БРЕНДИНГ</h2>
                 <p>Создаём и развиваем бренды.</p>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="event.stopPropagation();">Узнать больше</button>
+                    <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Брендинг')">Оставить заявку</button>
+                </div>
             </div>
             <div class="section-cover">
                 <img src="./public/images/pic3.png" alt="Брендинг">
@@ -74,6 +84,10 @@
             <div class="section-hero">
                 <h2>НЕЙМИНГ</h2>
                 <p>Придумываем названия для компаний и продуктов.</p>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="event.stopPropagation();">Узнать больше</button>
+                    <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Нейминг')">Оставить заявку</button>
+                </div>
             </div>
             <div class="static-img-container">
                 <img src="./public/images/pic4.png" alt="Нейминг">
@@ -85,6 +99,10 @@
             <div class="section-hero">
                 <h2>КОНСАЛТИНГ</h2>
                 <p>Экспертная поддержка бизнеса.</p>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="event.stopPropagation();">Узнать больше</button>
+                    <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Консалтинг')">Оставить заявку</button>
+                </div>
             </div>
             <div class="static-img-container">
                 <img src="./public/images/pic5.png" alt="Консалтинг">
@@ -135,16 +153,23 @@
         <div class="footer-content">
             <div id="about" class="footer-col">
                 <h4>О НАС</h4>
-                <p>Disciple Studio — это маркетинговое агентство, создающее минималистичные, современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге.</p>
+                <p>Disciple Agency — это маркетинговое агентство, создающее минималистичные, современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге.</p>
             </div>
             <div id="contact" class="footer-col">
                 <h4>КОНТАКТЫ</h4>
                 <p>Свяжитесь с нами для старта проекта</p>
                 <a href="tel:+77777777777" class="phone-link">7 777 777 77 77</a>
             </div>
+            <div id="social" class="footer-col">
+                <h4>МЫ В СОЦСЕТЯХ</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank">Telegram</a>
+                    <a href="#" target="_blank">МАКС</a>
+                </div>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Disciple Studio. Все права защищены.</p>
+            <p>&copy; 2026 Disciple Agency. Все права защищены.</p>
         </div>
     </footer>
 
@@ -326,6 +351,58 @@
                    </ul>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Форма Обратной Связи -->
+    <div id="contact-form-modal" class="fullscreen-modal gray-bg">
+        <button class="modal-close" onclick="closeModal('contact-form-modal')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            Отмена
+        </button>
+        <div class="modal-content form-content">
+            <h2 class="modal-title">Оставить заявку</h2>
+            <p id="form-service-subtitle" class="form-subtitle">Оформление заявки на услугу: <span>Общая</span></p>
+            
+            <!-- FormSubmit endpoint with target email -->
+            <form class="apple-form" action="https://formsubmit.co/den.alexeev.2020@mail.ru" method="POST">
+                <!-- Anti-spam honeypot -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Subject for email -->
+                <input type="hidden" name="_subject" value="Новая заявка с сайта Disciple Agency!">
+                <!-- Target URL after submission -->
+                <input type="hidden" name="_next" value="https://example.com/thanks.html">
+                <!-- Disable Captcha optionally -->
+                <input type="hidden" name="_captcha" value="false">
+                
+                <!-- Auto-selected Service -->
+                <input type="hidden" name="Услуга" id="hidden-service-input" value="Общая">
+                
+                <div class="form-group">
+                    <input type="text" id="name" name="Имя" required placeholder="Ваше имя">
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="Телефон" required placeholder="+7 (999) 000-00-00">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="Email" required placeholder="example@mail.ru">
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="Согласие_с_политикой" value="Да" required>
+                        <span class="checkmark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                        </span>
+                        <span class="checkbox-text">
+                            Я соглашаюсь с 
+                            <a href="./public/docs/согласие_на_обработку_андерсон_текстиль_.docx" target="_blank" download>Политикой конфиденциальности</a>.
+                        </span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary submit-btn">Отправить заявку</button>
+            </form>
         </div>
     </div>
 

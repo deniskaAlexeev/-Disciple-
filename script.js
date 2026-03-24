@@ -30,6 +30,17 @@ const smoothScrollTo = (element, targetPos, duration) => {
 };
 
 // ----- Modals (Page Transitions) ----- //
+window.openContactForm = function(serviceName) {
+    const modal = document.getElementById('contact-form-modal');
+    if(modal) {
+        const input = document.getElementById('hidden-service-input');
+        const subtitleSpan = document.querySelector('#form-service-subtitle span');
+        if (input) input.value = serviceName;
+        if (subtitleSpan) subtitleSpan.textContent = serviceName;
+        openModal('contact-form-modal');
+    }
+}
+
 window.openModal = function(id) {
     const modal = document.getElementById(id);
     if(modal) {

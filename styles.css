@@ -46,14 +46,7 @@
     background: rgba(255,255,255,0.2) !important;
 }
 
-/* Learn more blue button adjustments for dark background */
-[data-theme="dark"] .learn-more {
-    background-color: #0071e3;
-    color: #ffffff;
-}
-[data-theme="dark"] .interactive-section:hover .learn-more {
-    background-color: #0077ed;
-}
+/* Replaced old learn-more dark mode with new button architecture handled below */
 
 * {
     margin: 0;
@@ -239,6 +232,16 @@ body {
     pointer-events: none; /* Let clicks pass to section */
 }
 
+/* Allow interaction with specifically buttons inside the hero */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    pointer-events: auto; 
+}
+
 .section-hero.compact {
     margin-top: 8vh;
     margin-bottom: 2rem;
@@ -268,24 +271,48 @@ body {
     transform: scale(1.02);
 }
 
-/* Apple Blue Buttons */
-.learn-more {
+/* Apple Buttons */
+.btn {
     display: inline-flex;
     align-items: center;
     font-size: 1.1rem;
-    color: #ffffff;
-    background-color: #0071e3;
-    padding: 0.7rem 1.6rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 40px;
-    margin-top: 1rem;
     font-weight: 500;
-    pointer-events: none;
-    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s, background-color 0.3s, opacity 0.3s;
+    text-decoration: none;
+}
+.btn:hover {
+    transform: scale(1.03);
+}
+.btn:active {
+    transform: scale(0.97);
 }
 
-.interactive-section:hover .learn-more {
+.btn-primary {
+    background-color: #0071e3;
+    color: #ffffff;
+}
+.btn-primary:hover {
     background-color: #0077ed;
-    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: rgba(0,0,0,0.06);
+    color: var(--text-black);
+}
+.btn-secondary:hover {
+    background-color: rgba(0,0,0,0.12);
+}
+
+[data-theme="dark"] .btn-secondary {
+    background-color: rgba(255,255,255,0.15);
+    color: #ffffff;
+}
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: rgba(255,255,255,0.25);
 }
 
 /* Section Covars (New UI element) */
@@ -649,6 +676,118 @@ body {
     color: var(--text-gray) !important;
 }
 
+/* Form Styles */
+.form-content {
+    max-width: 600px;
+    text-align: center;
+}
+.form-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+}
+.form-subtitle span {
+    color: var(--text-black);
+    font-weight: 600;
+}
+.apple-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: left;
+}
+.form-group input {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(125,125,125,0.3);
+    background-color: rgba(125,125,125,0.05);
+    color: var(--text-black);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+.form-group input:focus {
+    border-color: #0071e3;
+    background-color: transparent;
+    box-shadow: 0 0 0 4px rgba(0,113,227,0.15);
+}
+[data-theme="dark"] .form-group input {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.checkbox-group {
+    margin-top: 0.5rem;
+}
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+.custom-checkbox input {
+    display: none;
+}
+.checkmark {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid rgba(125,125,125,0.5);
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+    flex-shrink: 0;
+}
+.checkmark svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s;
+}
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #0071e3;
+    border-color: #0071e3;
+}
+.custom-checkbox input:checked ~ .checkmark svg {
+    opacity: 1;
+    transform: scale(1);
+    color: white;
+}
+.checkbox-text a {
+    color: #0071e3;
+    text-decoration: none;
+}
+.checkbox-text a:hover {
+    text-decoration: underline;
+}
+.submit-btn {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.social-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: #0071e3;
+}
+
 
 /* Responsive - Extreme Density for Mobile */
 @media (max-width: 768px) {
@@ -671,10 +810,16 @@ body {
         font-size: 1.15rem;
     }
     
-    .learn-more {
-        margin-top: 0.5rem;
-        padding: 0.6rem 1.4rem;
-        font-size: 1rem;
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.05rem;
+        padding: 0.9rem 1.4rem;
     }
 
     .section-cover {
