@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fade-in-page">
     <header class="navbar">
         <div class="navbar-container">
             <a href="#" class="logo">Disciple Agency</a>
@@ -22,6 +22,10 @@
                 <a href="#contact">Контакты</a>
             </nav>
             <div class="header-controls">
+                <div class="lang-switch">
+                    <a href="index.html" class="active">RU</a>
+                    <a href="index-en.html">EN</a>
+                </div>
                 <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
                     <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -33,7 +37,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="fade-in-content">
         <!-- СТРАТЕГИИ (Interactive) -->
         <section id="strategies" class="apple-section interactive-section" onclick="openModal('strategies-modal')">
             <div class="section-hero">
@@ -89,13 +93,13 @@
                     <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Нейминг')">Обсудить проект</button>
                 </div>
             </div>
-            <div class="static-img-container">
+            <div class="section-cover">
                 <img src="./public/images/pic4.png" alt="Нейминг">
             </div>
         </section>
 
         <!-- КОНСАЛТИНГ (Static) -->
-        <section id="consulting" class="apple-section static-section">
+        <section id="consulting" class="apple-section static-section" style="border-bottom: none;">
             <div class="section-hero">
                 <h2>Консалтинг</h2>
                 <p>Экспертная поддержка бизнеса.</p>
@@ -104,7 +108,7 @@
                     <button class="btn btn-secondary" onclick="event.stopPropagation(); openContactForm('Консалтинг')">Обсудить проект</button>
                 </div>
             </div>
-            <div class="static-img-container">
+            <div class="section-cover">
                 <img src="./public/images/pic5.png" alt="Консалтинг">
             </div>
         </section>
@@ -148,21 +152,27 @@
     <footer class="apple-footer">
         <div class="footer-content">
             <div id="about" class="footer-col">
-                <h4>О НАС</h4>
-                <p>Disciple — это маркетинговое и брендинговое агентство, создающее современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге.</p>
+                <h4 data-i18n="footer.about_title">О НАС</h4>
+                <p data-i18n="footer.about_text">Disciple — агентство маркетинга и брендинга, создающее современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге.</p>
             </div>
-            <div id="social" class="footer-col">
-                <h4>СВЯЖИТЕСЬ С НАМИ</h4>
-                <div class="social-links">
-                    <a href="tel:+789033637114" class="phone-link">8 903 363 71 14</a>
+            <div id="social" class="footer-col" style="text-align: left;">
+                <h4 data-i18n="footer.contact_title">СВЯЖИТЕСЬ С НАМИ</h4>
+                <div class="social-links" style="justify-content: flex-start; align-items: flex-start; display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="tel:+79033637114" class="phone-link">+7 903 363 71 14</a>
                     <a href="mailto:hello@discipleagency.ru">hello@discipleagency.ru</a>
-                    <a href="https://t.me/natan_anderson" target="_blank">Telegram</a>
-                    <a href="https://max.ru/u/f9LHodD0cOK2ohU6UWMUIdOQGYH06No6xibVzCJrrPnC4aJIppUf8dnTX9w" target="_blank">МАКС</a>
+                    <div style="display: flex; gap: 1rem; align-items: center; margin-top: 0.5rem;" class="footer-icons">
+                        <a href="https://t.me/natan_anderson" target="_blank" aria-label="Telegram" class="social-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </a>
+                        <a href="https://max.ru/u/f9LHodD0cOK2ohU6UWMUIdOQGYH06No6xibVzCJrrPnC4aJIppUf8dnTX9w" target="_blank" aria-label="MAKS" class="social-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="letter-spacing:-3px; font-weight:900;"><text x="2" y="18" font-family="Arial" font-size="20" font-weight="900">M</text></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Disciple. Все права защищены.</p>
+            <p data-i18n="footer.copyright">&copy; 2026 Disciple. Все права защищены.</p>
         </div>
     </footer>
 
@@ -252,7 +262,7 @@
             <h2 class="modal-title">О нас</h2>
             <div class="split-content max-w-1000 mx-auto grid-2">
                 <div class="text-block">
-                    <p class="desc-text text-left" style="font-size: 1.35rem; line-height: 1.7;">Disciple — это маркетинговое и брендинговое агентство, создающее современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге, обеспечивая вашему бренду тотальное доминирование на рынке.</p>
+                    <p class="desc-text text-left" style="font-size: 1.35rem; line-height: 1.7;">Disciple — агентство маркетинга и брендинга, создающее современные и эффективные решения для бизнеса. Мы специализируемся на стратегиях, брендинге и комплексном маркетинге, обеспечивая вашему бренду тотальное доминирование на рынке.</p>
                 </div>
                 <div class="image-block achiev-card">
                     <img src="./public/images/svid.png" alt="Свидетельство" class="achiev-img br-20">
@@ -334,10 +344,10 @@
                    <p>Перед нами стояла задача создать с нуля бренд женской спортивной одежды, который будет ассоциироваться с элегантностью, эстетикой и премиальным качеством. Мы разработали концепцию бренда, спроектировали дизайн самой одежды, подобрали цветовую палитру и запустили полноценный интернет-магазин с интеграцией в соцсети.</p>
                    
                    <div class="grid-2">
-                       <img src="./public/images/na1.png" alt="Дизайн N.A. 1" class="project-img">
-                       <img src="./public/images/na2.jpg" alt="Дизайн N.A. 2" class="project-img">
-                       <img src="./public/images/na3.jpg" alt="Дизайн N.A. 3" class="project-img">
-                       <img src="./public/images/na4.jpg" alt="Дизайн N.A. 4" class="project-img">
+                       <img src="./public/images/na1.png" alt="Дизайн N.A. 1" class="project-img vertical-img">
+                       <img src="./public/images/na2.jpg" alt="Дизайн N.A. 2" class="project-img vertical-img">
+                       <img src="./public/images/na3.png" alt="Дизайн N.A. 3" class="project-img vertical-img">
+                       <img src="./public/images/na4.png" alt="Дизайн N.A. 4" class="project-img vertical-img">
                    </div>
                    
                    <h3>Что мы сделали</h3>
@@ -348,6 +358,10 @@
                    
                    <h3>Результаты</h3>
                    <p>Бренд успешно функционирует и продает коллекции по всей РФ. Создана узнаваемая торговая марка с лояльной аудиторией и стильным представительством.</p>
+
+                   <div style="margin-top: 3rem; text-align: left;">
+                       <a href="https://nathananderson.ru/" target="_blank" class="btn btn-primary" style="display: inline-block;">Перейти на сайт</a>
+                   </div>
                 </div>
             </div>
         </div>
@@ -365,7 +379,7 @@
                 <div class="case-study-body">
                    <p class="sub-desc">Монтаж и установка окон, межкомнатных и металлических дверей</p>
                    <h3>Краткая история</h3>
-                   <p>Строительная ниша перегрета, и выделиться в ней сложно. Заказчику требовалось понятное, человечное лицо бизнеса. Мы взяли на себя всё: от разработки имени до упаковки каталога, лидогенерации и создания фирменного сообщества в соцсетях.</p>
+                   <p>Строительная ниша перегрета, и выделиться в ней сложно. Заказчику требовалось понятное, человечное лицо бизнеса. Коля окна - мы придумали нейминг "Koly Fenster" и зарегистрировали бренд. Бренд переводится с немецкого как "Коля Окна". Мы взяли на себя всё: от разработки имени до упаковки каталога, лидогенерации и создания фирменного сообщества в соцсетях.</p>
                    
                    <div class="grid-2">
                        <img src="./public/images/kol1.png" alt="Коля Окна Работы 1" class="project-img">
@@ -382,6 +396,10 @@
                    
                    <h3>Результаты</h3>
                    <p>Бизнес получил «человечное» лицо и стабильный поток заявок на монтаж конструкций через связку «Сайт + полностью упакованная группа ВКонтакте».</p>
+
+                   <div style="margin-top: 3rem; text-align: left;">
+                       <a href="https://kolyaokna.ru/" target="_blank" class="btn btn-primary" style="display: inline-block;">Перейти на сайт</a>
+                   </div>
                 </div>
             </div>
         </div>
@@ -404,7 +422,8 @@
                    <div class="grid-2">
                        <img src="./public/images/ui1.png" alt="Интерьер 1" class="project-img">
                        <img src="./public/images/ui2.png" alt="Интерьер 2" class="project-img">
-                       <img src="./public/images/ui3.png" alt="Интерьер 3" class="project-img" style="grid-column: 1 / -1; aspect-ratio: 21/9;">
+                       <img src="./public/images/ui3.png" alt="Интерьер 3" class="project-img">
+                       <img src="./public/images/ui4.jpg" alt="Интерьер 4" class="project-img">
                    </div>
                    
                    <h3>Что мы сделали</h3>
@@ -415,6 +434,10 @@
                    
                    <h3>Результаты</h3>
                    <p>Студия позиционируется как надежный эксперт (150+ проектов). Упаковка позволила сформировать лист ожидания из клиентов на 4–6 недель вперед.</p>
+
+                   <div style="margin-top: 3rem; text-align: left;">
+                       <a href="https://upinterior.ru/" target="_blank" class="btn btn-primary" style="display: inline-block;">Перейти на сайт</a>
+                   </div>
                 </div>
             </div>
         </div>
@@ -431,7 +454,7 @@
             <p id="form-service-subtitle" class="form-subtitle">Оформление заявки на услугу: <span>Общая</span></p>
             
             <!-- FormSubmit endpoint with target email -->
-            <form class="apple-form" action="https://formsubmit.co/den.alexeev.2020@mail.ru" method="POST" enctype="multipart/form-data">
+            <form class="apple-form" action="https://formsubmit.co/natananderson@yandex.ru" method="POST" enctype="multipart/form-data">
                 <!-- Anti-spam honeypot -->
                 <input type="text" name="_honey" style="display:none">
                 <!-- Subject for email -->

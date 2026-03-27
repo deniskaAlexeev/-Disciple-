@@ -19,7 +19,12 @@
     border-bottom: 12px solid #000;
 }
 [data-theme="dark"] .apple-section.gray-bg {
+    background-color: #000 !important;
     border-bottom: 12px solid #000;
+}
+
+[data-theme="dark"] .fullscreen-modal.gray-bg {
+    background: #000 !important;
 }
 
 [data-theme="dark"] .modal-close {
@@ -32,6 +37,13 @@
 }
 [data-theme="dark"] .fullscreen-modal.gray-bg .modal-close {
     background: rgba(17,17,17,0.8) !important;
+}
+
+[data-theme="dark"] .lang-switch {
+    background: rgba(255,255,255,0.15);
+}
+[data-theme="dark"] .lang-switch a.active {
+    background: rgba(255,255,255,0.9);
 }
 
 [data-theme="dark"] .apple-section.bg-black {
@@ -68,6 +80,37 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.fade-in-content {
+    animation: fadeInContent 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInContent {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.lang-switch {
+    display: inline-flex;
+    background: var(--bg-gray);
+    border-radius: 20px;
+    padding: 3px;
+    gap: 2px;
+}
+.lang-switch a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 16px;
+    color: var(--text-gray);
+    transition: all 0.3s ease;
+}
+.lang-switch a.active {
+    background: var(--bg-white);
+    color: var(--text-black);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
 /* Header */
 .navbar {
     position: fixed;
@@ -102,16 +145,17 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.2rem;
 }
 
 .nav-links a {
     color: var(--text-black);
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     opacity: 0.8;
     transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -610,6 +654,25 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vertical-img {
+    aspect-ratio: 3/4;
+}
+
+.project-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
 .case-study-body {
     max-width: 800px;
     margin: 0 auto;
@@ -908,14 +971,13 @@ body {
 @media (max-width: 768px) {
     /* Compact Apple spacing rule: fit approx 2 blocks */
     .apple-section {
-        min-height: 50vh;
-        padding-top: 7rem;
-        padding-bottom: 1rem;
+        min-height: auto;
+        padding-top: 6rem;
     }
     
     .section-hero {
         margin-top: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     .apple-section h2 {
@@ -926,18 +988,26 @@ body {
     }
     
     .action-buttons {
+        display: flex;
         flex-direction: row;
         gap: 0.5rem;
         width: 100%;
     }
     
     .btn {
-        flex: 1;
-        min-width: 0;
+        flex: 1 1 50%;
+        width: 200px;
+        height: 50px;
+        display: inline-flex;
+        align-items: center;
         justify-content: center;
-        font-size: 0.9rem;
-        padding: 0.9rem 0.25rem;
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
         white-space: nowrap;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
     }
 
     .section-cover {

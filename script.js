@@ -1,33 +1,6 @@
 const body = document.body;
 
-// Universal Smooth Scroller
-const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-const smoothScrollTo = (element, targetPos, duration) => {
-    const startPos = element === window ? window.pageYOffset : element.scrollLeft;
-    const distance = targetPos - startPos;
-    let startTime = null;
-
-    const animation = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        const ease = easeInOutQuad(progress);
-        
-        const nextPos = startPos + distance * ease;
-        
-        if (element === window) {
-            window.scrollTo(0, nextPos);
-        } else {
-            element.scrollLeft = nextPos;
-        }
-
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-        }
-    };
-    requestAnimationFrame(animation);
-};
+// Removing obsolete math-based smooth scroll in favor of strict native browser implementation!
 
 // ----- Modals (Page Transitions) ----- //
 window.openContactForm = function(serviceName) {
@@ -109,9 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     const targetEl = document.querySelector(targetId);
                     if (targetEl) {
-                        // Explicit window scroll to ensure smoothness on all systems
+                        // Native acceleration is instant and perfectly buttery
                         const topPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - 48;
-                        smoothScrollTo(window, topPosition, 600);
+                        window.scrollTo({
+                            top: topPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 }
                 
@@ -142,9 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const slide = slides[currentIndex];
             const scrollPos = slide.offsetLeft - track.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
             
-            // Temporarily disable scroll-snap to let custom smoothscroll play out perfectly
+            // Temporarily disable scroll-snap to let native smoothscroll execute without jitter
             track.style.scrollSnapType = 'none';
-            smoothScrollTo(track, scrollPos, 600);
+            track.scrollTo({ left: scrollPos, behavior: 'smooth' });
             
             // Revert back so manual finger swipes still snap correctly
             setTimeout(() => { track.style.scrollSnapType = 'x mandatory'; }, 650);
@@ -216,5 +192,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Start autoplay on load
         startAutoplay();
+    }
+
+    // ----- Contact Form AJAX Submission ----- //
+    const contactForm = document.querySelector('.apple-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+            // Convert standard FormSubmit URL to their AJAX endpoint
+            const actionUrl = this.action.replace('formsubmit.co', 'formsubmit.co/ajax');
+
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success || data.success === "true") {
+                    const formContent = this.closest('.form-content');
+                    if (formContent) {
+                        formContent.innerHTML = `
+                            <div style="text-align: center; padding: 4rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 2rem;">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <h2 class="modal-title" style="margin-bottom: 1.5rem; font-size: 3rem;">Спасибо!</h2>
+                                <p style="font-size: 1.25rem; color: var(--text-gray); line-height: 1.6; max-width: 500px; margin: 0 auto;">Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время для детального обсуждения проекта.</p>
+                            </div>
+                        `;
+                    }
+                } else {
+                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ошибка соединения. Пожалуйста, проверьте интернет и попробуйте еще раз.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
     }
 });
