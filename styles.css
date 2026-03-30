@@ -42,8 +42,12 @@
 [data-theme="dark"] .lang-switch {
     background: rgba(255,255,255,0.15);
 }
+[data-theme="dark"] .lang-switch a {
+    color: rgba(255,255,255,0.6);
+}
 [data-theme="dark"] .lang-switch a.active {
     background: rgba(255,255,255,0.9);
+    color: #111111;
 }
 
 [data-theme="dark"] .apple-section.bg-black {
@@ -78,6 +82,15 @@ body {
     color: var(--text-black);
     line-height: 1.4;
     transition: background-color 0.3s, color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+:focus-visible {
+    outline: 2px solid #2997ff;
+    outline-offset: 2px;
 }
 
 .fade-in-content {
@@ -967,8 +980,8 @@ body {
     color: var(--text-black);
 }
 
-/* Responsive - Extreme Density for Mobile */
-@media (max-width: 768px) {
+/* Responsive - Extreme Density for Mobile & Tablets */
+@media (max-width: 992px) {
     /* Compact Apple spacing rule: fit approx 2 blocks */
     .apple-section {
         min-height: auto;
@@ -994,8 +1007,8 @@ body {
         width: 100%;
     }
     
-    .btn {
-        flex: 1 1 0%;
+    .action-buttons .btn {
+        flex: 1 1 50%;
         width: 100%;
         height: 50px;
         display: inline-flex;

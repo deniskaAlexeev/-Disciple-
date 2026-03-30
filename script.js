@@ -18,6 +18,7 @@ window.openModal = function(id) {
     const modal = document.getElementById(id);
     if(modal) {
         modal.classList.add('active');
+        document.documentElement.style.overflow = 'hidden'; // iOS fix
         body.style.overflow = 'hidden'; // Lock background scroll
         // reset scroll position of the modal itself just in case
         modal.scrollTo(0, 0);
@@ -28,6 +29,7 @@ window.closeModal = function(id) {
     const modal = document.getElementById(id);
     if(modal) {
         modal.classList.remove('active');
+        document.documentElement.style.overflow = ''; // Unlock iOS
         body.style.overflow = ''; // Unlock scroll
     }
 }
@@ -201,7 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Отправка...';
+            const isEn = document.documentElement.lang === 'en';
+            
+            submitBtn.textContent = isEn ? 'Sending...' : 'Отправка...';
             submitBtn.disabled = true;
 
             const formData = new FormData(this);
@@ -226,20 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                                 </svg>
-                                <h2 class="modal-title" style="margin-bottom: 1.5rem; font-size: 3rem;">Спасибо!</h2>
-                                <p style="font-size: 1.25rem; color: var(--text-gray); line-height: 1.6; max-width: 500px; margin: 0 auto;">Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время для детального обсуждения проекта.</p>
+                                <h2 class="modal-title" style="margin-bottom: 1.5rem; font-size: 3rem;">${isEn ? 'Thank you!' : 'Спасибо!'}</h2>
+                                <p style="font-size: 1.25rem; color: var(--text-gray); line-height: 1.6; max-width: 500px; margin: 0 auto;">${isEn ? 'Your request has been successfully sent. We will contact you shortly to discuss the project in detail.' : 'Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время для детального обсуждения проекта.'}</p>
                             </div>
                         `;
                     }
                 } else {
-                    alert('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.');
+                    alert(isEn ? 'An error occurred while sending. Please try again.' : 'Произошла ошибка при отправке. Пожалуйста, попробуйте снова.');
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Ошибка соединения. Пожалуйста, проверьте интернет и попробуйте еще раз.');
+                alert(isEn ? 'Connection error. Please check your internet and try again.' : 'Ошибка соединения. Пожалуйста, проверьте интернет и попробуйте еще раз.');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
