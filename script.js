@@ -22,6 +22,10 @@ window.openModal = function(id) {
         body.style.overflow = 'hidden'; // Lock background scroll
         // reset scroll position of the modal itself just in case
         modal.scrollTo(0, 0);
+        // Deep linking hash update
+        if (window.location.hash !== '#' + id) {
+            history.replaceState(null, null, '#' + id);
+        }
     }
 }
 
@@ -31,6 +35,10 @@ window.closeModal = function(id) {
         modal.classList.remove('active');
         document.documentElement.style.overflow = ''; // Unlock iOS
         body.style.overflow = ''; // Unlock scroll
+        // Remove deep linking hash cleanly
+        if (window.location.hash === '#' + id) {
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
     }
 }
 
@@ -48,6 +56,16 @@ initTheme();
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Deep Linking: Auto-open modal if hash exists
+    if (window.location.hash && window.location.hash.includes('-modal')) {
+        const targetModalId = window.location.hash.substring(1);
+        setTimeout(() => {
+            if (document.getElementById(targetModalId)) {
+                window.openModal(targetModalId);
+            }
+        }, 150);
+    }
+
     // Theme Button Event
     const themeToggleBtn = document.getElementById('themeToggle');
     if (themeToggleBtn) {

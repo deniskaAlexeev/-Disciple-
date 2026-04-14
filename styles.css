@@ -947,6 +947,12 @@ body {
     gap: 4rem;
     align-items: center;
 }
+.diploma-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
 .text-block {
     flex: 1;
 }
@@ -1035,6 +1041,10 @@ body {
         gap: 2rem;
         text-align: left;
     }
+    .diploma-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
     .image-block {
         align-items: flex-start;
     }
@@ -1107,8 +1117,16 @@ body {
         grid-template-columns: 1fr;
     }
     .modal-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
+        line-height: 1.2;
+    }
+    #project1-modal .modal-title,
+    #project2-modal .modal-title,
+    #project3-modal .modal-title {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
     }
     .case-study-body h3 {
         font-size: 1.5rem;
